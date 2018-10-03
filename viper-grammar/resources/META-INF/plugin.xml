@@ -19,6 +19,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
+      <fileTypeFactory implementation="com.vgfplugin.VgfFileTypeFactory" />
   </extensions>
 
   <actions>
