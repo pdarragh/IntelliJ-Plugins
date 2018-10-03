@@ -1,0 +1,28 @@
+<idea-plugin>
+  <id>com.pdarragh.plugins.ViperGrammarFileSyntaxHighlighter</id>
+  <name>Viper Grammar File Syntax Highlighter</name>
+  <version>1.0</version>
+  <vendor email="pierce.darragh@gmail.com" url="https://github.com/pdarragh/IntelliJ-Plugins">Pierce's Plugins</vendor>
+
+  <description><![CDATA[
+      Provides syntax highlighting for Viper grammar files.
+    ]]></description>
+
+  <change-notes></change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.lang</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
