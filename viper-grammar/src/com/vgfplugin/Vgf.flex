@@ -25,13 +25,7 @@ START_RULE      = "<"
 END_RULE        = ">"
 DEF_SEP         = "::="
 ALT_SEP         = "|"
-REPEAT          = "*"
-MIN_REPEAT      = "+"
-OPTIONAL        = "?"
-SEP_REPEAT      = "&*"
-MIN_SEP_REPEAT  = "&+"
-ASSIGN          = ":"
-QUOTE           = "'" | "\""
+PROP_SEP        = ":"
 
 RuleName        = {START_RULE} {WORD_CHAR}+ {END_RULE}
 ProductionName  = {CAPITAL_CHAR} {WORD_CHAR}*
@@ -46,12 +40,10 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
 <YYINITIAL> {
     {COMMENT}           { return VgfTypes.COMMENT; }
     {LINE_TERMINATOR}   { return VgfTypes.LINE_TERMINATOR; }
-
-    {RuleName}          { return VgfTypes.RULE_NAME; }
-    {ProductionName}    { return VgfTypes.PRODUCTION_NAME; }
-    {PropertyName}      { return VgfTypes.PROPERTY_NAME; }
-
-    {SeparatorLiteral}  { return VgfTypes.SEP_LIT; }
+    {WHITE_SPACE}       { return TokenType.WHITE_SPACE; }
+    {DEF_SEP}           { return VgfTypes.DEF_SEP; }
+    {ALT_SEP}           { return VgfTypes.ALT_SEP; }
+    {PROP_SEP}          { return VgfTypes.PROP_SEP; }
 
     "INDENT"            { return VgfTypes.INDENT; }
     "DEDENT"            { return VgfTypes.DEDENT; }
@@ -89,6 +81,12 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
     "+"                 { return VgfTypes.MIN_REPEAT; }
     "&*"                { return VgfTypes.SEP_REPEAT; }
     "&+"                { return VgfTypes.MIN_SEP_REPEAT; }
+
+    {RuleName}          { return VgfTypes.RULE_NAME; }
+    {ProductionName}    { return VgfTypes.PRODUCTION_NAME; }
+    {PropertyName}      { return VgfTypes.PROPERTY_NAME; }
+
+    {SeparatorLiteral}  { return VgfTypes.SEP_LIT; }
 
     {QuotedPortion}     { return VgfTypes.LITERAL; }
 }

@@ -17,8 +17,8 @@ vgfFile         ::= item_*
 
 private item_   ::= ( definition | COMMENT | LINE_TERMINATOR )
 
-definition      ::= RULE_NAME production+
-production      ::= PRODUCTION_NAME ( LITERAL | special_token | property )+
+definition      ::= RULE_NAME DEF_SEP production ( LINE_TERMINATOR? ALT_SEP production )*
+production      ::= PRODUCTION_NAME ( special_token | property | LITERAL )+
                   | RULE_NAME
 special_token   ::= INDENT
                   | DEDENT
@@ -40,7 +40,7 @@ special_token   ::= INDENT
                   | UNDERSCORE
                   | CLASS
                   | OPERATOR
-property        ::= PROPERTY_NAME ( RULE_NAME | special_token ) modifier?
+property        ::= PROPERTY_NAME PROP_SEP ( RULE_NAME | special_token ) modifier?
 modifier        ::= OPTIONAL
                   | REPEAT
                   | MIN_REPEAT
