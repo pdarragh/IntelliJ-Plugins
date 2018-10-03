@@ -13,8 +13,36 @@
     tokenTypeClass="com.vgfplugin.psi.VgfTokenType"
 }
 
-vgfFile ::= item_*
+vgfFile         ::= item_*
 
-private item_ ::= (definition|COMMENT|CRLF)
+private item_   ::= ( definition | COMMENT | LINE_TERMINATOR )
 
-definition ::= (NAME DEF_SEP PRODUCTION (ALT_SEP PRODUCTION)*) | (ALT_SEP PRODUCTION)
+definition      ::= RULE_NAME production+
+production      ::= PRODUCTION_NAME ( LITERAL | special_token | property )+
+                  | RULE_NAME
+special_token   ::= INDENT
+                  | DEDENT
+                  | ENDMARKER
+                  | NEWLINE
+                  | PERIOD
+                  | EQUALS
+                  | COMMA
+                  | OPEN_PAREN
+                  | CLOSE_PAREN
+                  | COLON
+                  | L_ARROW
+                  | R_ARROW
+                  | ELLIPSIS
+                  | INT
+                  | FLOAT
+                  | STRING
+                  | NAME
+                  | UNDERSCORE
+                  | CLASS
+                  | OPERATOR
+property        ::= PROPERTY_NAME ( RULE_NAME | special_token ) modifier?
+modifier        ::= OPTIONAL
+                  | REPEAT
+                  | MIN_REPEAT
+                  | SEP_REPEAT SEP_LIT
+                  | MIN_SEP_REPEAT SEP_LIT
