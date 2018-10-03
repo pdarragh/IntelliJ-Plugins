@@ -1,0 +1,20 @@
+{
+    parserClass="com.vgfplugin.parser.SimpleParser"
+
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="Vgf"
+    psiImplClassSuffix="Impl"
+    psiPackage="com.vgfplugin.psi"
+    psiImplPackage="com.vgfplugin.psi.impl"
+
+    elementTypeHolderClass="com.vgfplugin.psi.VgfTypes"
+    elementTypeClass="com.vgfplugin.psi.VgfElementType"
+    tokenTypeClass="com.vgfplugin.psi.VgfTokenType"
+}
+
+vgfFile ::= item_*
+
+private item_ ::= (definition|COMMENT|CRLF)
+
+definition ::= (NAME DEF_SEP PRODUCTION (ALT_SEP PRODUCTION)*) | (ALT_SEP PRODUCTION)
