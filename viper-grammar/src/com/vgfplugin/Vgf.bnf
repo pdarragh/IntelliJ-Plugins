@@ -1,5 +1,5 @@
 {
-    parserClass="com.vgfplugin.parser.SimpleParser"
+    parserClass="com.vgfplugin.parser.VgfParser"
 
     extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
