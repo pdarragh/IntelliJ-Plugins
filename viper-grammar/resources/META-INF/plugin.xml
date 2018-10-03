@@ -21,6 +21,7 @@
     <!-- Add your extensions here -->
       <fileTypeFactory implementation="com.vgfplugin.VgfFileTypeFactory" />
       <lang.parserDefinition language="VGF" implementationClass="com.vgfplugin.VgfParserDefinition" />
+      <lang.syntaxHighlighterFactory language="VGF" implementationClass="com.vgfplugin.VgfSyntaxHighlighterFactory" />
   </extensions>
 
   <actions>
