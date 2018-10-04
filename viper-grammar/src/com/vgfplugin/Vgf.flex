@@ -54,7 +54,7 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
     "PERIOD"            { return VgfTypes.PERIOD; }
     "'.'"               { return VgfTypes.PERIOD; }
     "EQUALS"            { return VgfTypes.EQUALS; }
-    "="                 { return VgfTypes.EQUALS; }
+    "'='"               { return VgfTypes.EQUALS; }
     "COMMA"             { return VgfTypes.COMMA; }
     "','"               { return VgfTypes.COMMA; }
     "OPEN_PAREN"        { return VgfTypes.OPEN_PAREN; }

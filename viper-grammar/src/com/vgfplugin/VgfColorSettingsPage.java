@@ -36,7 +36,7 @@ public class VgfColorSettingsPage implements ColorSettingsPage {
     public String getDemoText() {
         return "# You are reading a Viper Grammar File.\n" +
                "<rule_name>     ::= Newline NEWLINE\n" +
-               "                  | ProductionName prop:<rule_name>? 'rule'";
+               "                  | ProductionName '=' prop:<rule_name>? 'rule'";
     }
 
     @Nullable
