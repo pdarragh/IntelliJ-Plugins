@@ -22,6 +22,7 @@
       <fileTypeFactory implementation="com.vgfplugin.VgfFileTypeFactory" />
       <lang.parserDefinition language="VGF" implementationClass="com.vgfplugin.VgfParserDefinition" />
       <lang.syntaxHighlighterFactory language="VGF" implementationClass="com.vgfplugin.VgfSyntaxHighlighterFactory" />
+      <colorSettingsPage implementation="com.vgfplugin.VgfColorSettingsPage" />
   </extensions>
 
   <actions>
