@@ -38,6 +38,7 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
 %%
 
 <YYINITIAL> {
+    // Literal matches
     {COMMENT}           { return VgfTypes.COMMENT; }
     {LINE_TERMINATOR}   { return VgfTypes.LINE_TERMINATOR; }
     {WHITE_SPACE}       { return TokenType.WHITE_SPACE; }
@@ -45,6 +46,7 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
     {ALT_SEP}           { return VgfTypes.ALT_SEP; }
     {PROP_SEP}          { return VgfTypes.PROP_SEP; }
 
+    // Special tokens
     "INDENT"            { return VgfTypes.INDENT; }
     "DEDENT"            { return VgfTypes.DEDENT; }
     "ENDMARKER"         { return VgfTypes.ENDMARKER; }
@@ -76,6 +78,7 @@ QuotedPortion   = [\'] [^\']+ [\'] | [\"] [^\"]+ [\"]
     "CLASS"             { return VgfTypes.CLASS; }
     "OPERATOR"          { return VgfTypes.OPERATOR; }
 
+    // Modifiers
     "?"                 { return VgfTypes.OPTIONAL; }
     "*"                 { return VgfTypes.REPEAT; }
     "+"                 { return VgfTypes.MIN_REPEAT; }

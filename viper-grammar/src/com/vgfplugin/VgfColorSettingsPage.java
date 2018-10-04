@@ -16,6 +16,7 @@ public class VgfColorSettingsPage implements ColorSettingsPage {
             new AttributesDescriptor("Special Token", VgfSyntaxHighlighter.SPECIAL_TOKEN),
             new AttributesDescriptor("Comment", VgfSyntaxHighlighter.COMMENT),
             new AttributesDescriptor("Literal", VgfSyntaxHighlighter.LITERAL),
+            new AttributesDescriptor("Modifier", VgfSyntaxHighlighter.MODIFIER),
     };
 
     @Nullable

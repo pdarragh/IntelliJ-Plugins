@@ -18,6 +18,7 @@ public class VgfSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey SPECIAL_TOKEN = createTextAttributesKey("VGF_SPECIAL_TOKEN", DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL);
     public static final TextAttributesKey COMMENT = createTextAttributesKey("VGF_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey LITERAL = createTextAttributesKey("VGF_LITERAL", DefaultLanguageHighlighterColors.STRING);
+    public static final TextAttributesKey MODIFIER = createTextAttributesKey("VGF_MODIFIER", DefaultLanguageHighlighterColors.OPERATION_SIGN);
     public static final TextAttributesKey BAD_CHARACTER = createTextAttributesKey("VGF_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
     private static final TextAttributesKey[] RULE_NAME_KEYS = new TextAttributesKey[]{RULE_NAME};
@@ -26,6 +27,7 @@ public class VgfSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] SPECIAL_TOKEN_KEYS = new TextAttributesKey[]{SPECIAL_TOKEN};
     private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
     private static final TextAttributesKey[] LITERAL_KEYS = new TextAttributesKey[]{LITERAL};
+    private static final TextAttributesKey[] MODIFIER_KEYS = new TextAttributesKey[]{MODIFIER};
     private static final TextAttributesKey[] BAD_CHARACTER_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
 
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
@@ -45,12 +47,37 @@ public class VgfSyntaxHighlighter extends SyntaxHighlighterBase {
             return PRODUCTION_NAME_KEYS;
         } else if (tokenType.equals(VgfTypes.PROPERTY_NAME)) {
             return PROPERTY_NAME_KEYS;
-        } else if (tokenType.equals(VgfTypes.SPECIAL_TOKEN)) {
+        } else if (tokenType.equals(VgfTypes.INDENT)
+                || tokenType.equals(VgfTypes.DEDENT)
+                || tokenType.equals(VgfTypes.ENDMARKER)
+                || tokenType.equals(VgfTypes.NEWLINE)
+                || tokenType.equals(VgfTypes.PERIOD)
+                || tokenType.equals(VgfTypes.EQUALS)
+                || tokenType.equals(VgfTypes.COMMA)
+                || tokenType.equals(VgfTypes.OPEN_PAREN)
+                || tokenType.equals(VgfTypes.CLOSE_PAREN)
+                || tokenType.equals(VgfTypes.COLON)
+                || tokenType.equals(VgfTypes.L_ARROW)
+                || tokenType.equals(VgfTypes.R_ARROW)
+                || tokenType.equals(VgfTypes.ELLIPSIS)
+                || tokenType.equals(VgfTypes.INT)
+                || tokenType.equals(VgfTypes.FLOAT)
+                || tokenType.equals(VgfTypes.STRING)
+                || tokenType.equals(VgfTypes.NAME)
+                || tokenType.equals(VgfTypes.UNDERSCORE)
+                || tokenType.equals(VgfTypes.CLASS)
+                || tokenType.equals(VgfTypes.OPERATOR)) {
             return SPECIAL_TOKEN_KEYS;
         } else if (tokenType.equals(VgfTypes.COMMENT)) {
             return COMMENT_KEYS;
         } else if (tokenType.equals(VgfTypes.LITERAL)) {
             return LITERAL_KEYS;
+        } else if (tokenType.equals(VgfTypes.OPTIONAL)
+                || tokenType.equals(VgfTypes.REPEAT)
+                || tokenType.equals(VgfTypes.MIN_REPEAT)
+                || tokenType.equals(VgfTypes.SEP_REPEAT)
+                || tokenType.equals(VgfTypes.MIN_SEP_REPEAT)) {
+            return MODIFIER_KEYS;
         } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
             return BAD_CHARACTER_KEYS;
         } else {
